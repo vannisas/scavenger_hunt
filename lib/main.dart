@@ -67,6 +67,36 @@ class SelectionScreen extends StatelessWidget {
               right: 447,
               child: _buildButton(context, const ChevronCenterPage()),
             ),
+            Positioned(
+              top: 58,
+              right: 550,
+              child: _buildButton(context, const CivilEngLabPage()),
+            ),
+            Positioned(
+              bottom: 159,
+              right: 448,
+              child: _buildButton(context, const CambreAtriumPage()),
+            ),
+            Positioned(
+              bottom: 137,
+              right: 658,
+              child: _buildButton(context, const OperationLabPage()),
+            ),
+            Positioned(
+              bottom: 144,
+              left: 519,
+              child: _buildButton(context, const BASFLabPage()),
+            ),
+                Positioned(
+              top: 143,
+              left: 531,
+              child: _buildButton(context, const MechanicalEngLabPage()),
+            ),
+                Positioned(
+              top: 272,
+              left: 412,
+              child: _buildButton(context, const CommonsPage()),
+            ),
           ],
         ),
       ),
@@ -95,7 +125,6 @@ class SelectionScreen extends StatelessWidget {
   }
 }
 
-// roblotics lab page
 class RoboticsLabPage extends StatelessWidget {
   const RoboticsLabPage({super.key});
 
@@ -107,7 +136,6 @@ class RoboticsLabPage extends StatelessWidget {
   }
 }
 
-// capstone gallery page
 class CapstoneGalleryPage extends StatelessWidget {
   const CapstoneGalleryPage({super.key});
 
@@ -119,7 +147,6 @@ class CapstoneGalleryPage extends StatelessWidget {
   }
 }
 
-// cheveron center page
 class ChevronCenterPage extends StatelessWidget {
   const ChevronCenterPage({super.key});
 
@@ -127,6 +154,72 @@ class ChevronCenterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Chevron Center')),
+    );
+  }
+}
+
+class CivilEngLabPage extends StatelessWidget {
+  const CivilEngLabPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Civil Engineering Lab')),
+    );
+  }
+}
+
+class CambreAtriumPage extends StatelessWidget {
+  const CambreAtriumPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Cambre Atrium & Donor Wall')),
+    );
+  }
+}
+
+class OperationLabPage extends StatelessWidget {
+  const OperationLabPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('DOW Chemical Unit Operations Lab')),
+    );
+  }
+}
+
+class BASFLabPage extends StatelessWidget {
+  const BASFLabPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('BASF Sustainable Living Lab')),
+    );
+  }
+}
+
+class MechanicalEngLabPage extends StatelessWidget {
+  const MechanicalEngLabPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Mechanical Egineering Labs')),
+    );
+  }
+}
+
+class CommonsPage extends StatelessWidget {
+  const CommonsPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('The Commons')),
     );
   }
 }
