@@ -4,18 +4,59 @@ void main() {
   runApp(const MaterialApp(home: HomeScreen()));
 }
 
-// main home screen
+// main homescreen
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
+  // entrance choice popup
   Future<void> _navigateAndDisplaySelection(BuildContext context) async {
-    final result = await Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const Firstfloor()),
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          insetPadding: EdgeInsets.all(20), 
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20), 
+          ),
+          child: Stack(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20), 
+                child: Image.asset(
+                  'images/patrickentrances.png', 
+                  fit: BoxFit.contain, 
+                  width: MediaQuery.of(context).size.width * 0.7, 
+                  height: MediaQuery.of(context).size.height * 0.587, 
+                ),
+              ),
+              Positioned(
+                bottom: 0, 
+                left: 0,
+                child: _buildButton(
+                  context,
+                  const Firstfloor(),
+                  width: 545.0,
+                  height: 1000.0, 
+                ),
+              ),
+              Positioned(
+                bottom: 0, 
+                right: 0,
+                child: _buildButton(
+                  context,
+                  Firstfloor(isRightButton: true), 
+                  width: 545.0, 
+                  height: 1000.0, 
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
-    print(result);
   }
 
+// start homepage
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,10 +76,12 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
- 
+
 // first floor
 class Firstfloor extends StatelessWidget {
-  const Firstfloor({super.key});
+  final bool isRightButton;
+
+  const Firstfloor({super.key, this.isRightButton = false});
 
   @override
   Widget build(BuildContext context) {
@@ -46,14 +89,12 @@ class Firstfloor extends StatelessWidget {
       body: Center(
         child: Stack(
           children: [
-            // map image
             Positioned.fill(
               child: Image.asset(
-                'images/patrickmap.png',
+                isRightButton ? 'images/patrickmap2.png' : 'images/patrickmap.png', 
                 fit: BoxFit.contain,
               ),
             ),
-            // buttons for different locations
             Positioned(
               top: 208,
               right: 426,
@@ -216,7 +257,7 @@ Widget _buildButton(BuildContext context, Widget destinationPage, {double width 
   );
 }
 
-//pages
+// pages
 class RoboticsLabPage extends StatelessWidget {
   const RoboticsLabPage({super.key});
   @override
