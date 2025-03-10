@@ -264,7 +264,45 @@ class RoboticsLabPage extends StatelessWidget {
   const RoboticsLabPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: const Text('Robotics Lab')));
+    return Scaffold(appBar: AppBar(title: const Text('Robotics Lab'),
+        backgroundColor: const Color.fromARGB(255, 131, 174, 194), 
+        centerTitle: true, 
+        elevation: 0, 
+        titleTextStyle: TextStyle(
+          fontSize: 28, 
+          fontWeight: FontWeight.bold, 
+          color: Colors.white, 
+        ),
+      ),
+      body: Container(
+        color: const Color.fromARGB(255, 131, 174, 194), 
+        child: Padding(
+          padding: const EdgeInsets.all(85.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                'images/robotics-lab.jpg',  
+                width: 700.0,  
+                height: 500.0, 
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(width: 36), 
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Text(
+                    'The College of Engineering offers a minor in robotics and provides a lab space to support this program. '
+                    'Some of the equipment housed in this lab include a hydraulic robotic arm; robotic vehicles, such as spiders and crawlers; and a mini humanoid robot named “Darwin.” ',
+                    style: TextStyle(fontSize: 25),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
