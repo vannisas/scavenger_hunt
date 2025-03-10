@@ -405,7 +405,45 @@ class CivilEngLabPage extends StatelessWidget {
   const CivilEngLabPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: const Text('Civil Engineering Lab')));
+    return Scaffold(appBar: AppBar(title: const Text('Civil Engineering Lab'),
+        backgroundColor: const Color.fromARGB(255, 131, 174, 194), 
+        centerTitle: true, 
+        elevation: 0, 
+        titleTextStyle: TextStyle(
+          fontSize: 28, 
+          fontWeight: FontWeight.bold, 
+          color: Colors.white, 
+        ),
+      ),
+      body: Container(
+        color: const Color.fromARGB(255, 131, 174, 194), 
+        child: Padding(
+          padding: const EdgeInsets.all(85.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                'images/civil_eng.jpg',  
+                width: 700.0,  
+                height: 500.0, 
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(width: 36), 
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Text(
+                    'In this section of Patrick F. Taylor Hall, you will find most of our civil engineering student labs. '
+                    'Here, our students test concrete for strength and damage, test and create asphalt, test the chemical composition and strength of soils, and study the strength of metal and timber.',
+                    style: TextStyle(fontSize: 25),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
