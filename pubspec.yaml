@@ -70,6 +70,7 @@ flutter:
   - images/Drivinglab.jpg
   - images/robotics-lab.jpg
   - images/capstone-gallery.jpg
+  - images/chevron_center.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 

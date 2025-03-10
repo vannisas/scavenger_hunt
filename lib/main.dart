@@ -339,7 +339,7 @@ class CapstoneGalleryPage extends StatelessWidget {
                   child: Text(
                     'Welcome to Patrick F. Taylor Hall, home to the LSU College of Engineering.'
                     'Named after 1959 petroleum engineering graduate, Patrick F. Taylor, it is the largest academic building in the state of Louisiana and one of the largest free-standing College of Engineering buildings in the United States. '
-                    'As a result of our recent $114-million renovation and expansion, this building is now more than 400,000 square feet and provides students and faculty with state-of-the-art classrooms and labs. '
+                    'As a result of our recent 114-million dollar renovation and expansion, this building is now more than 400,000 square feet and provides students and faculty with state-of-the-art classrooms and labs. '
                     'It also serves as the central hub for the College of Engineering’s eight academic departments, which educate thousands of undergraduate and graduate students each year.',
                     style: TextStyle(fontSize: 25),
                     textAlign: TextAlign.justify,
@@ -358,7 +358,46 @@ class ChevronCenterPage extends StatelessWidget {
   const ChevronCenterPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: const Text('Chevron Center')));
+    return Scaffold(appBar: AppBar(title: const Text('Chevron Center'),
+        backgroundColor: const Color.fromARGB(255, 131, 174, 194), 
+        centerTitle: true, 
+        elevation: 0, 
+        titleTextStyle: TextStyle(
+          fontSize: 28, 
+          fontWeight: FontWeight.bold, 
+          color: Colors.white, 
+        ),
+      ),
+      body: Container(
+        color: const Color.fromARGB(255, 131, 174, 194), 
+        child: Padding(
+          padding: const EdgeInsets.all(85.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                'images/chevron_center.jpg',  
+                width: 700.0,  
+                height: 500.0, 
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(width: 36), 
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Text(
+                    'The Chevron Center for Engineering Education is one of three studios that support a university-wide program called Communication Across the Curriculum, which was started in 2005 by a chemical engineering alum. '
+                    'The program focuses on improving four areas of communication: written, spoken, visual, and technological, while deepening student learning of course content. '
+                    'This space has 3D printers, large format printers, and many electronic devices that students may rent to complete class projects. ',
+                    style: TextStyle(fontSize: 25),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
