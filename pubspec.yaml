@@ -72,6 +72,12 @@ flutter:
   - images/capstone-gallery.jpg
   - images/chevron_center.jpg
   - images/civil_eng.jpg
+  - images/cambre_atrium.jpg
+  - images/basf_lab.jpg
+  - images/commons.jpg
+  - images/mech_eng_lab.jpg
+  - images/operations_lab.jpg
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
