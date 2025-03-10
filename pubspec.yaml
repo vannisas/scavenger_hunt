@@ -63,7 +63,11 @@ flutter:
   - images/patrickmap2floor.png
   - images/patrickentrances.png
   - images/patrickmap2.png
-
+  - images/BIMlab.jpg
+  - images/Brookeshire.jpg
+  - images/Proto.jpg
+  - images/Annex.jpg
+  - images/Drivinglab.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 

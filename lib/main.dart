@@ -258,6 +258,8 @@ Widget _buildButton(BuildContext context, Widget destinationPage, {double width 
 }
 
 // pages
+
+// first floor pages
 class RoboticsLabPage extends StatelessWidget {
   const RoboticsLabPage({super.key});
   @override
@@ -330,42 +332,261 @@ class CommonsPage extends StatelessWidget {
   }
 }
 
+
+// second floor pages
 class BIMLab extends StatelessWidget {
   const BIMLab({super.key});
+  
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: const Text('BIM Lab')));
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('BIM Lab'),
+        backgroundColor: const Color.fromARGB(255, 131, 174, 194), 
+        centerTitle: true, 
+        elevation: 0, 
+        titleTextStyle: TextStyle(
+          fontSize: 28, 
+          fontWeight: FontWeight.bold, 
+          color: Colors.white, 
+        ),
+      ),
+      body: Container(
+        color: const Color.fromARGB(255, 131, 174, 194), 
+        child: Padding(
+          padding: const EdgeInsets.all(85.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                'images/BIMlab.jpg',  
+                width: 700.0,  
+                height: 500.0, 
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(width: 36), 
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Text(
+                    'The MMR Building Information Modeling Laboratory is utilized by construction management students and was specially designed and constructed by our faculty. '
+                    'The lab space consists of 44 4K displays that allow for three-dimensional and computer-generated views of building plans. This allows students and faculty to virtually visit building sites to make assessments, alter plans, and consider concerns like safety and maintenance. '
+                    'In addition to this unique lab space, the Bert S. Turner Department of Construction Management has several labs and classrooms on the third floor, including an estimating and scheduling lab, a room with several CATS equipment simulators, and an advanced materials lab.',
+                    style: TextStyle(fontSize: 25),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
+
+
 
 class PROTOLab extends StatelessWidget {
   const PROTOLab({super.key});
+  
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: const Text('PROTO Lab')));
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('PROTO Lab'),
+        backgroundColor: const Color.fromARGB(255, 131, 174, 194), 
+        centerTitle: true, 
+        elevation: 0, 
+        titleTextStyle: TextStyle(
+          fontSize: 28, 
+          fontWeight: FontWeight.bold, 
+          color: Colors.white,
+        ),
+      ),
+      body: Container(
+        color: const Color.fromARGB(255, 131, 174, 194),
+        child: Padding(
+          padding: const EdgeInsets.all(85.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                'images/Proto.jpg',  
+                width: 700.0, 
+                height: 500.0, 
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(width: 36), 
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Text(
+                    'The Mark and Carolyn Guidry Electrical Engineering Laboratory Duplex houses a microprocessor interfacing lab and a proto lab. '
+                    'This space is used by students to fabricate circuit boards and create device prototypes. It is designed as a chemistry lab with fume hoods to allow students to safely handle chemicals required for circuitry and is fully outfitted with soldering stations, cutting machines, and 3D printers. '
+                    'Additionally, the lighting and windows are designed to filter out UV light, which would interfere with the process of layering circuit boards. This lab duplex was made possible by College of Engineering alumni Mark and Carolyn Guidry, whose unique story is provided on the nearby purple placard.',
+                    style: TextStyle(fontSize: 25),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
+
+
 
 class DrivingLab extends StatelessWidget {
   const DrivingLab({super.key});
+  
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: const Text('Driving Lab')));
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Civil Engineering Driving Simulator Lab'),
+        backgroundColor: const Color.fromARGB(255, 131, 174, 194), 
+        centerTitle: true, 
+        elevation: 0, 
+        titleTextStyle: TextStyle(
+          fontSize: 28, 
+          fontWeight: FontWeight.bold, 
+          color: Colors.white,
+        ),
+      ),
+      body: Container(
+        color: const Color.fromARGB(255, 131, 174, 194), 
+        child: Padding(
+          padding: const EdgeInsets.all(85.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                'images/Drivinglab.jpg',  
+                width: 700.0,  
+                height: 500.0, 
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(width: 36), 
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Text(
+                    'The Civil Engineering Driving Simulator Laboratory allows students and faculty to research driving behaviors, environments, and traffic. Equipped with multiple screens, projectors, and blackout curtains, this lab gives our researchers the ability to test drive on new roadways and study drivers’ reactions to unexpected obstacles and events. '
+                    'Recent research projects include the outcomes of distracted driving, the effects of various weather conditions, and how drivers might interact with a semi-autonomous driving system.',
+                    style: TextStyle(fontSize: 25),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
+
 
 class BrookeshireSuite extends StatelessWidget {
   const BrookeshireSuite({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: const Text('Brookeshire Student Services Suite')));
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Brookeshire Student Services Suite'),
+        backgroundColor: const Color.fromARGB(255, 131, 174, 194),
+        centerTitle: true, 
+        elevation: 0, 
+        titleTextStyle: TextStyle(
+          fontSize: 28, 
+          fontWeight: FontWeight.bold, 
+          color: Colors.white, 
+        ),
+      ),
+      body: Container(
+        color: const Color.fromARGB(255, 131, 174, 194), 
+        child: Padding(
+          padding: const EdgeInsets.all(85.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                'images/Brookeshire.jpg', 
+                width: 700.0,  
+                height: 500.0, 
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(width: 36), 
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Text(
+                    'The Dr. William A. Brookshire Student Services Suite is a “go-to” first stop for most students who have questions or need help with the administrative and academic demands that come with being a college student. '
+                    'The Office of Student Services provides many resources, as well as academic advisors, all of whom are licensed professional counselors, to help with things like changing majors, adding a minor, and verifying how course credits have transferred from other institutions. '
+                    'This suite also houses other professional staff, including an engineering career coach, recruiting and outreach staff.',
+                    style: TextStyle(fontSize: 25),
+                    textAlign: TextAlign.justify, 
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
+
 class AnnexLab extends StatelessWidget {
   const AnnexLab({super.key});
+  
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: const Text('Annex/Drilling Fluids Lab')));
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Annex/Drilling Fluids Lab'),
+        backgroundColor: const Color.fromARGB(255, 131, 174, 194), 
+        centerTitle: true, 
+        elevation: 0, 
+        titleTextStyle: TextStyle(
+          fontSize: 28, 
+          fontWeight: FontWeight.bold,
+          color: Colors.white, 
+        ),
+      ),
+      body: Container(
+        color: const Color.fromARGB(255, 131, 174, 194), 
+        child: Padding(
+          padding: const EdgeInsets.all(85.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                'images/Annex.jpg',  
+                width: 700.0,  
+                height: 500.0,
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(width: 36),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Text(
+                    'This particular petroleum engineering space is the Drilling Fluids Laboratory. Drilling fluids are the mixtures of water, clay, minerals and chemicals used by petroleum engineers to maintain pressure within a well, clean and lubricate drill bits and bore holes, and transport cuttings and debris to the surface. '
+                    'Since each well is unique, petroleum engineers must tailor the chemical and physical properties of drilling fluids to each well’s geology in order to control pressures and maintain safety. Petroleum engineers use many different methods and types of equipment to measure and adjust drilling fluids including mud balances, filter presses, and viscometers. '
+                    'This lab provides a space for students to gain hands-on experience with this type of equipment so they are well-prepared for work in the field.',
+                    style: TextStyle(fontSize: 25),
+                    textAlign: TextAlign.justify, 
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
+
+
