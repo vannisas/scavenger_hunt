@@ -56,19 +56,56 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-// start homepage
+  // start homepage
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('')),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Stack(
+          fit: StackFit.expand,
           children: [
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () => _navigateAndDisplaySelection(context),
-              child: const Text("Start"),
+            Image.asset(
+              'images/purple.jpg',  
+              fit: BoxFit.cover,    
+            ),
+            Container(
+            ),
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Patrick Taylor Hall Scavenger Hunt', 
+                    style: TextStyle(
+                      fontSize: 32, 
+                      fontWeight: FontWeight.bold, 
+                      color: Colors.white, 
+                      letterSpacing: 2, 
+                      shadows: [
+                        Shadow(
+                          blurRadius: 10.0,
+                          offset: Offset(2.0, 2.0),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 40), 
+                  ElevatedButton(
+                    onPressed: () => _navigateAndDisplaySelection(context),
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white, backgroundColor: Colors.deepPurple, 
+                      padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30), 
+                      ),
+                    ),
+                    child: const Text(
+                      "Start", 
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -245,12 +282,12 @@ Widget _buildButton(BuildContext context, Widget destinationPage, {double width 
       );
     },
     style: ElevatedButton.styleFrom(
-      backgroundColor: Colors.transparent, 
-      shadowColor: Colors.transparent, 
+      backgroundColor: Colors.transparent,
+      shadowColor: Colors.transparent,
       minimumSize: Size(width, height),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
-        side: BorderSide(color: Colors.transparent), 
+        side: BorderSide(color: Colors.transparent),
       ),
     ),
     child: const SizedBox.shrink(),
@@ -262,75 +299,460 @@ Widget _buildButton(BuildContext context, Widget destinationPage, {double width 
 // first floor pages
 class RoboticsLabPage extends StatelessWidget {
   const RoboticsLabPage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: const Text('Robotics Lab')));
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Robotics Lab'),
+        backgroundColor: const Color.fromARGB(255, 131, 174, 194),
+        centerTitle: true, 
+        elevation: 0, 
+        titleTextStyle: TextStyle(
+          fontSize: 28, 
+          fontWeight: FontWeight.bold, 
+          color: Colors.white, 
+        ),
+      ),
+      body: Container(
+        color: const Color.fromARGB(255, 131, 174, 194),
+        child: Padding(
+          padding: const EdgeInsets.all(85.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                'images/Robotics.jpg',  
+                width: 700.0,  
+                height: 500.0, 
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(width: 36),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Text(
+                    'The College of Engineering offers a minor in robotics and provides a lab space to support this program. Some of the equipment housed in this lab include a hydraulic robotic arm; robotic vehicles, such as spiders and crawlers; and a mini humanoid robot named “Darwin.”',
+                    style: TextStyle(fontSize: 25),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
+
 
 class CapstoneGalleryPage extends StatelessWidget {
   const CapstoneGalleryPage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: const Text('Capstone Gallery')));
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Capstone Gallery'),
+        backgroundColor: const Color.fromARGB(255, 131, 174, 194),
+        centerTitle: true, 
+        elevation: 0, 
+        titleTextStyle: TextStyle(
+          fontSize: 28, 
+          fontWeight: FontWeight.bold, 
+          color: Colors.white, 
+        ),
+      ),
+      body: Container(
+        color: const Color.fromARGB(255, 131, 174, 194),
+        child: Padding(
+          padding: const EdgeInsets.all(85.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                'images/Capstone.jpg',  
+                width: 700.0,  
+                height: 500.0, 
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(width: 36),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Text(
+                    'Welcome to Patrick F. Taylor Hall, home to the LSU College of Engineering. Named after 1959 petroleum engineering graduate, Patrick F. Taylor, '
+                    'it is the largest academic building in the state of Louisiana and one of the largest free-standing College of Engineering buildings in the United States. '
+                    'As a result of our recent 114-million renovation and expansion, this building is now more than 400,000 square feet and provides students and faculty with state-of-the-art classrooms and labs. '
+                    'It also serves as the central hub for the College of Engineering’s eight academic departments, which educate thousands of undergraduate and graduate students each year.',
+                    style: TextStyle(fontSize: 25),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
+
 
 class ChevronCenterPage extends StatelessWidget {
   const ChevronCenterPage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: const Text('Chevron Center')));
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Chevron Center'),
+        backgroundColor: const Color.fromARGB(255, 131, 174, 194),
+        centerTitle: true, 
+        elevation: 0, 
+        titleTextStyle: TextStyle(
+          fontSize: 28, 
+          fontWeight: FontWeight.bold, 
+          color: Colors.white, 
+        ),
+      ),
+      body: Container(
+        color: const Color.fromARGB(255, 131, 174, 194),
+        child: Padding(
+          padding: const EdgeInsets.all(85.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                'images/Chevron.jpg',  
+                width: 700.0,  
+                height: 500.0, 
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(width: 36),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Text(
+                    'The Chevron Center for Engineering Education is one of three studios that support a university-wide program called Communication Across the Curriculum, '
+                    'which was started in 2005 by a chemical engineering alum. The program focuses on improving four areas of communication: written, spoken, visual, and technological, '
+                    'while deepening student learning of course content. This space has 3D printers, large format printers, and many electronic devices that students may rent to complete class projects. '
+                    'Students who take the required number of communication-intensive courses and complete a senior portfolio can graduate as a Distinguished Communicator. The College of Engineering is proud '
+                    'to graduate the most Distinguished Communicators each year, thanks in large part to this space and the professional staff who run it.',
+                    style: TextStyle(fontSize: 25),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
+
 
 class CivilEngLabPage extends StatelessWidget {
   const CivilEngLabPage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: const Text('Civil Engineering Lab')));
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Civil Engineering Lab'),
+        backgroundColor: const Color.fromARGB(255, 131, 174, 194),
+        centerTitle: true, 
+        elevation: 0, 
+        titleTextStyle: TextStyle(
+          fontSize: 28, 
+          fontWeight: FontWeight.bold, 
+          color: Colors.white, 
+        ),
+      ),
+      body: Container(
+        color: const Color.fromARGB(255, 131, 174, 194),
+        child: Padding(
+          padding: const EdgeInsets.all(85.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                'images/Civil.jpg', 
+                width: 700.0,  
+                height: 500.0, 
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(width: 36),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Text(
+                    'In this section of Patrick F. Taylor Hall, you will find most of our civil engineering student labs. Here, our students test concrete for strength and damage, '
+                    'test and create asphalt, test the chemical composition and strength of soils, and study the strength of metal and timber.',
+                    style: TextStyle(fontSize: 25),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
+
 
 class CambreAtriumPage extends StatelessWidget {
   const CambreAtriumPage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: const Text('Cambre Atrium & Donor Wall')));
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Cambre Atrium & Donor Wall'),
+        backgroundColor: const Color.fromARGB(255, 131, 174, 194),
+        centerTitle: true, 
+        elevation: 0, 
+        titleTextStyle: TextStyle(
+          fontSize: 28, 
+          fontWeight: FontWeight.bold, 
+          color: Colors.white, 
+        ),
+      ),
+      body: Container(
+        color: const Color.fromARGB(255, 131, 174, 194),
+        child: Padding(
+          padding: const EdgeInsets.all(85.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                'images/Cambre.jpg',  
+                width: 700.0,  
+                height: 500.0, 
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(width: 36),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Text(
+                    'The Cambre Atrium is one of three main common spaces in Patrick F. Taylor Hall. It connects what was the existing old building to a newly built, three-story lab annex. '
+                    'A number of chemical engineering labs run the length of the Cambre Atrium on one side, and classrooms line the other, ranging in size from about 30 seats up to 150 seats. '
+                    'The largest classroom space in the building is the RoyOMartin Auditorium, which holds up to 250 students. Across from the doors to the RoyOMartin Auditorium, you’ll find the Donor Wall, '
+                    'which recognizes the names of donors and industry partners who, along with funds from the state of Louisiana, helped make the renovation of Patrick F. Taylor Hall possible.',
+                    style: TextStyle(fontSize: 25),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
+
 class OperationLabPage extends StatelessWidget {
   const OperationLabPage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: const Text('DOW Chemical Unit Operations Lab')));
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('DOW Chemical Unit Operations Lab'),
+        backgroundColor: const Color.fromARGB(255, 131, 174, 194), 
+        centerTitle: true, 
+        elevation: 0, 
+        titleTextStyle: TextStyle(
+          fontSize: 28, 
+          fontWeight: FontWeight.bold, 
+          color: Colors.white, 
+        ),
+      ),
+      body: Container(
+        color: const Color.fromARGB(255, 131, 174, 194),
+        child: Padding(
+          padding: const EdgeInsets.all(85.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                'images/Operation.jpg',  
+                width: 700.0,  
+                height: 500.0, 
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(width: 36),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Text(
+                    'The Dow Chemical Unit Operations Laboratory is a learning lab housed within the Cain Department of Chemical Engineering. '
+                    'It contains various pieces of equipment that are designed to complete specific “unit operations.” A unit operation is a single step in a chemical process, such as separation, crystallization, oxidation, etc. '
+                    'For instance, the first machine on the left is an Ethylene Oxidation Reactor, which, as the name suggests, oxidizes ethylene into ethylene oxide, a common compound found in laundry detergents.',
+                    style: TextStyle(fontSize: 25),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
 class BASFLabPage extends StatelessWidget {
   const BASFLabPage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: const Text('BASF Sustainable Living Lab')));
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('BASF Sustainable Living Lab'),
+        backgroundColor: const Color.fromARGB(255, 131, 174, 194), 
+        centerTitle: true, 
+        elevation: 0, 
+        titleTextStyle: TextStyle(
+          fontSize: 28, 
+          fontWeight: FontWeight.bold, 
+          color: Colors.white, 
+        ),
+      ),
+      body: Container(
+        color: const Color.fromARGB(255, 131, 174, 194),
+        child: Padding(
+          padding: const EdgeInsets.all(85.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                'images/BASF.jpg',  
+                width: 700.0,  
+                height: 500.0, 
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(width: 36),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Text(
+                    'The BASF Sustainable Living Laboratory was funded by a 1 million donation from BASF. The flooring, paint, and ceiling in this lab are all made from BASF products. '
+                    'The lab space is dedicated to research investigating sustainable solutions to meet global challenges. The current researcher-in-residence, Dr. Jimmy Lawrence, studies and develops new functional polymers and nanoscale composites for healthcare, energy, environmental, and other industrial applications.',
+                    style: TextStyle(fontSize: 25),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
 class MechanicalEngLabPage extends StatelessWidget {
   const MechanicalEngLabPage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: const Text('Mechanical Engineering Labs')));
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Mechanical Engineering Labs'),
+        backgroundColor: const Color.fromARGB(255, 131, 174, 194), 
+        centerTitle: true, 
+        elevation: 0, 
+        titleTextStyle: TextStyle(
+          fontSize: 28, 
+          fontWeight: FontWeight.bold, 
+          color: Colors.white, 
+        ),
+      ),
+      body: Container(
+        color: const Color.fromARGB(255, 131, 174, 194),
+        child: Padding(
+          padding: const EdgeInsets.all(85.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                'images/Mechanical.jpg',  
+                width: 700.0,  
+                height: 500.0, 
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(width: 36),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Text(
+                    'This section of Patrick F. Taylor Hall is home to many student-focused lab spaces for mechanical and industrial engineering, '
+                    'including the human factors, thermal systems, materials, and instrumentation labs. Within these labs, you will find equipment '
+                    'like a wind tunnel, tensile strength testers, and 3D-motion analysis systems.',
+                    style: TextStyle(fontSize: 25),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
+
 class CommonsPage extends StatelessWidget {
   const CommonsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: const Text('The Commons')));
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('The Commons'),
+        backgroundColor: const Color.fromARGB(255, 131, 174, 194), 
+        centerTitle: true, 
+        elevation: 0, 
+        titleTextStyle: TextStyle(
+          fontSize: 28, 
+          fontWeight: FontWeight.bold, 
+          color: Colors.white, 
+        ),
+      ),
+      body: Container(
+        color: const Color.fromARGB(255, 131, 174, 194), 
+        child: Padding(
+          padding: const EdgeInsets.all(85.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                'images/Commons.jpg',  
+                width: 700.0,  
+                height: 500.0, 
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(width: 36), 
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Text(
+                    'This atrium space is aptly named “The Commons” and serves as the main gathering space for everyone in Patrick F. Taylor Hall. '
+                    'Students frequent this space between classes, not only because of the Panera Bread, but also because of the nearby Dow Student Leadership Incubator, '
+                    'which serves as a meeting and storage space for the more than 40 student organizations that are part of our college.',
+                    style: TextStyle(fontSize: 25),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
+
 
 
 // second floor pages
@@ -588,5 +1010,4 @@ class AnnexLab extends StatelessWidget {
     );
   }
 }
-
 

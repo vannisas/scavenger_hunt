@@ -68,6 +68,18 @@ flutter:
   - images/Proto.jpg
   - images/Annex.jpg
   - images/Drivinglab.jpg
+  - images/Commons.jpg
+  - images/Mechanical.jpg
+  - images/BASF.jpg
+  - images/Operations.jpg
+  - images/Cambre.jpg
+  - images/Civil.jpg
+  - images/Capstone.jpg
+  - images/Robotics.jpg
+  - images/Chevron.jpg
+  - images/purple.jpg
+  
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
