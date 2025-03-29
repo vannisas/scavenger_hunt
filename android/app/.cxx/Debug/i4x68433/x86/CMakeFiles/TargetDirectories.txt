@@ -1,0 +1,2 @@
+C:/Users/vokie/projects/scavenger_hunt-1/android/app/.cxx/Debug/i4x68433/x86/CMakeFiles/edit_cache.dir
+C:/Users/vokie/projects/scavenger_hunt-1/android/app/.cxx/Debug/i4x68433/x86/CMakeFiles/rebuild_cache.dir
