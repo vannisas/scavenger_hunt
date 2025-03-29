@@ -51,7 +51,9 @@ class HomeScreen extends StatelessWidget {
 
 // bottom navigation bar
 class StartScreen extends StatefulWidget {
-  const StartScreen({super.key});
+  final int initialPage;
+
+  const StartScreen({super.key, this.initialPage = 0});
 
   @override
   State<StartScreen> createState() => _StartScreenState();
@@ -59,6 +61,12 @@ class StartScreen extends StatefulWidget {
 
 class _StartScreenState extends State<StartScreen> {
   int currentPageIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    currentPageIndex = widget.initialPage; 
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -99,6 +107,7 @@ class _StartScreenState extends State<StartScreen> {
 }
 
 // map page
+
 class MapPage extends StatelessWidget {
   const MapPage({super.key});
 
@@ -122,7 +131,7 @@ class MapPage extends StatelessWidget {
                 builder: (context) {
                   return AlertDialog(
                     title: const Text('Instruction'),
-                    content: const Text(''),
+                    content: const Text('Use pinch-to-zoom to explore the map.'),
                     actions: [
                       TextButton(
                         onPressed: () {
@@ -149,17 +158,23 @@ class MapPage extends StatelessWidget {
           ),
         ],
       ),
-      endDrawer: const RoomDrawer(),
-      body: Center(
-        child: InteractiveViewer(
-          boundaryMargin: const EdgeInsets.all(20),
-          minScale: 0.5,
-          maxScale: 3.0,
-          child: Image.asset(
-            'images/patrickmap.png',
-            fit: BoxFit.contain,
-          ),
-        ),
+      endDrawer: RoomDrawer(), 
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return InteractiveViewer(
+            boundaryMargin: EdgeInsets.zero,
+            minScale: 1.0,
+            maxScale: 4.0,
+            child: SizedBox(
+              width: constraints.maxWidth,
+              height: constraints.maxHeight,
+              child: Image.asset(
+                'images/patrickmap.png',
+                fit: BoxFit.contain,
+              ),
+            ),
+          );
+        },
       ),
     );
   }
@@ -308,11 +323,250 @@ class RoomDrawer extends StatelessWidget {
               );
             },
           ),
+          ListTile(
+            title: const Text('Second Floor'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SecondFloorPage(initialPage: 1), 
+                ),
+              );
+            },
+          ),
         ],
       ),
     );
   }
 }
+
+class SecondFloorPage extends StatefulWidget {
+  final int initialPage;
+
+  const SecondFloorPage({super.key, this.initialPage = 0});
+
+  @override
+  State<SecondFloorPage> createState() => _SecondFloorPageState();
+}
+
+class _SecondFloorPageState extends State<SecondFloorPage> {
+  int currentPageIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    currentPageIndex = widget.initialPage; 
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(0),
+        child: Container(),
+      ),
+      endDrawer: const SecondFloorDrawer(),
+      body: <Widget>[
+        const HomePage(),
+        Column(
+          children: [
+            AppBar(
+              automaticallyImplyLeading: false,
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HomeScreen()),
+                  );
+                },
+              ),
+              actions: [
+                IconButton(
+                  icon: const Icon(Icons.info_outline),
+                  tooltip: 'Instruction',
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: const Text('Instruction'),
+                          content: const Text(''),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text('OK'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                ),
+                Builder(
+                  builder: (context) {
+                    return IconButton(
+                      icon: const Icon(Icons.menu),
+                      tooltip: 'Room Navigation',
+                      onPressed: () {
+                        Scaffold.of(context).openEndDrawer();
+                      },
+                    );
+                  },
+                ),
+              ],
+            ),
+            Expanded(
+              child: InteractiveViewer(
+                boundaryMargin: const EdgeInsets.all(20),
+                minScale: 0.5,
+                maxScale: 3.0,
+                child: Image.asset(
+                  'images/patrickmap2floor.png',
+                  fit: BoxFit.contain,
+                ),
+              ),
+            ),
+          ],
+        ),
+        const QuizPage(),
+      ][currentPageIndex],
+      bottomNavigationBar: NavigationBar(
+        onDestinationSelected: (int index) {
+          setState(() {
+            currentPageIndex = index;
+          });
+        },
+        indicatorColor: const Color.fromARGB(109, 158, 158, 158),
+        selectedIndex: currentPageIndex,
+        destinations: const <Widget>[
+          NavigationDestination(
+            selectedIcon: Icon(Icons.home),
+            icon: Icon(Icons.home_outlined),
+            label: 'Home',
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.map),
+            icon: Icon(Icons.map_outlined),
+            label: 'Map',
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.quiz),
+            icon: Icon(Icons.quiz_outlined),
+            label: 'Quiz',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// second floor navigation drawer
+class SecondFloorDrawer extends StatelessWidget {
+  const SecondFloorDrawer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          const Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Text(
+              'ROOMS',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+          ),
+          ListTile(
+            title: const Text('10. BIM Lab'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const RoomPage(
+                    roomName: 'BIM Lab',
+                    roomFact: 'Facts about BIM Lab.',
+                  ),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('11. Proto Lab'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const RoomPage(
+                    roomName: 'Proto Lab',
+                    roomFact: 'Facts about Proto Lab.',
+                  ),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('12. Annex/Drilling Fluids Lab'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const RoomPage(
+                    roomName: 'Annex/Drilling Fluids Lab',
+                    roomFact: 'Facts about Annex/Drilling Fluids Lab.',
+                  ),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('13. Civil Engineering Driving Simulator Lab'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const RoomPage(
+                    roomName: 'Civil Engineering Driving Simulator Lab',
+                    roomFact: 'Facts about Civil Engineering Driving Simulator Lab.',
+                  ),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('14. Brookshire Student Services Suite'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const RoomPage(
+                    roomName: 'Brookshire Student Services Suite',
+                    roomFact: 'Facts about Brookshire Student Services Suite.',
+                  ),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('First Floor'),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const StartScreen(initialPage: 1),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 
 // room page
 class RoomPage extends StatelessWidget {
@@ -329,18 +583,19 @@ class RoomPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const BackButton(),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const HomeScreen()),
+            );
+          },
+        ),
         title: Text(roomName),
       ),
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Text(
-            roomFact,
-            style: const TextStyle(fontSize: 18),
-            textAlign: TextAlign.center,
-          ),
-        ),
+        child: Text(roomFact),
       ),
     );
   }
@@ -354,46 +609,24 @@ class QuizPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const BackButton(),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.info_outline),
-            tooltip: 'Instruction',
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    title: const Text('Instruction'),
-                    content: const Text(
-                        ''),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Text('OK'),
-                      ),
-                    ],
-                  );
-                },
-              );
-            },
-          ),
-        ],
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const HomeScreen()),
+            );
+          },
+        ),
       ),
       body: const Center(
-        child: Text(
-          'questions',
-          style: TextStyle(fontSize: 18),
-        ),
+        child: Text('Quiz Content'),
       ),
     );
   }
 }
 
-
-// home page
+// homepage
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -401,17 +634,18 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const BackButton(),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const HomeScreen()),
+            );
+          },
+        ),
       ),
       body: const Center(
-        child: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Text(
-            'Welcome to the Patrick Taylor Hall Scavenger Hunt App.\n\nExplore the rooms and complete the quiz!',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 18),
-          ),
-        ),
+        child: Text('Home Page'),
       ),
     );
   }
