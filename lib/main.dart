@@ -65,7 +65,7 @@ class _StartScreenState extends State<StartScreen> {
   @override
   void initState() {
     super.initState();
-    currentPageIndex = widget.initialPage; 
+    currentPageIndex = widget.initialPage;
   }
 
   @override
@@ -115,12 +115,6 @@ class MapPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.info_outline),
@@ -158,7 +152,7 @@ class MapPage extends StatelessWidget {
           ),
         ],
       ),
-      endDrawer: RoomDrawer(), 
+      endDrawer: RoomDrawer(),
       body: LayoutBuilder(
         builder: (context, constraints) {
           return InteractiveViewer(
@@ -179,6 +173,7 @@ class MapPage extends StatelessWidget {
     );
   }
 }
+
 
 // navigation drawer
 class RoomDrawer extends StatelessWidget {
@@ -227,100 +222,51 @@ class RoomDrawer extends StatelessWidget {
           ),
           ListTile(
             title: const Text('3. DOW Chemical Unit Operations Lab'),
+            trailing: const Icon(Icons.lock),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const RoomPage(
-                    roomName: 'DOW Chemical Unit Operations Lab',
-                    roomFact: 'Facts for DOW Chemical Unit Operations Lab.',
-                  ),
-                ),
-              );
+              _showLockedDialog(context, 'DOW Chemical Unit Operations Lab');
             },
           ),
           ListTile(
             title: const Text('4. BASF Sustainable Living Lab'),
+            trailing: const Icon(Icons.lock),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const RoomPage(
-                    roomName: 'BASF Sustainable Living Lab',
-                    roomFact: 'Facts for BASF Sustainable Living Lab.',
-                  ),
-                ),
-              );
+              _showLockedDialog(context, 'BASF Sustainable Living Lab');
             },
           ),
           ListTile(
             title: const Text('5. The Commons'),
+            trailing: const Icon(Icons.lock),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const RoomPage(
-                    roomName: 'The Commons',
-                    roomFact: 'Facts for The Commons.',
-                  ),
-                ),
-              );
+              _showLockedDialog(context, 'The Commons');
             },
           ),
           ListTile(
             title: const Text('6. Mechanical Engineering Labs'),
+            trailing: const Icon(Icons.lock),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const RoomPage(
-                    roomName: 'Mechanical Engineering Labs',
-                    roomFact: 'Facts for Mechanical Engineering Labs.',
-                  ),
-                ),
-              );
+              _showLockedDialog(context, 'Mechanical Engineering Labs');
             },
           ),
           ListTile(
             title: const Text('7. Civil Engineering Lab'),
+            trailing: const Icon(Icons.lock),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const RoomPage(
-                    roomName: 'Civil Engineering Lab',
-                    roomFact: 'Facts for Civil Engineering Lab.',
-                  ),
-                ),
-              );
+              _showLockedDialog(context, 'Civil Engineering Lab');
             },
           ),
           ListTile(
             title: const Text('8. Robotics Lab'),
+            trailing: const Icon(Icons.lock),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const RoomPage(
-                    roomName: 'Robotics Lab',
-                    roomFact: 'Facts for Robotics Lab.',
-                  ),
-                ),
-              );
+              _showLockedDialog(context, 'Robotics Lab');
             },
           ),
           ListTile(
             title: const Text('9. Chevron Center for Engineering Education'),
+            trailing: const Icon(Icons.lock),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const RoomPage(
-                    roomName: 'Chevron Center for Engineering Education',
-                    roomFact: 'Facts for Chevron Center for Engineering Education.',
-                  ),
-                ),
-              );
+              _showLockedDialog(context, 'Chevron Center for Engineering Education');
             },
           ),
           ListTile(
@@ -338,6 +284,92 @@ class RoomDrawer extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<void> _showLockedDialog(BuildContext context, String roomName) async {
+  TextEditingController controller = TextEditingController();
+
+  // password answer
+  final roomPasswords = {
+    'DOW Chemical Unit Operations Lab': '1114',
+    'BASF Sustainable Living Lab': '1154',
+    'The Commons': '1278',
+    'Mechanical Engineering Labs': '1354',
+    'Civil Engineering Lab': '1323',
+    'Robotics Lab': '1300',
+    'Chevron Center for Engineering Education': '1269',
+  };
+
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: false,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('LOCKED'),
+
+        content: Stack(
+          clipBehavior: Clip.none, 
+          children: [
+            SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  TextField(
+                    controller: controller,
+                    decoration: const InputDecoration(hintText: 'Enter password'),
+                    obscureText: true,
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              right: 8.0, 
+              top: 8.0, 
+              child: MouseRegion(
+                onEnter: (_) {
+                },
+                onExit: (_) {
+                },
+                child: Tooltip(
+                  message: 'Enter the correct password for this room to unlock it.',
+                  child: IconButton(
+                    icon: const Icon(Icons.info_outline),
+                    tooltip: 'Password: Room #',
+                    onPressed: () {
+                    },
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+        actions: <Widget>[
+          TextButton(
+            child: const Text('Submit'),
+            onPressed: () {
+              if (controller.text == roomPasswords[roomName]) {
+                Navigator.of(context).pop();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => RoomPage(
+                      roomName: roomName,
+                      roomFact: 'Facts about $roomName.',
+                    ),
+                  ),
+                );
+              }
+            },
+          ),
+          TextButton(
+            child: const Text('Cancel'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
 }
 
 class SecondFloorPage extends StatefulWidget {
@@ -374,6 +406,7 @@ class _SecondFloorPageState extends State<SecondFloorPage> {
               automaticallyImplyLeading: false,
               leading: IconButton(
                 icon: const Icon(Icons.arrow_back),
+                tooltip: 'Back',
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
@@ -482,72 +515,37 @@ class SecondFloorDrawer extends StatelessWidget {
           ),
           ListTile(
             title: const Text('10. BIM Lab'),
+            trailing: const Icon(Icons.lock),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const RoomPage(
-                    roomName: 'BIM Lab',
-                    roomFact: 'Facts about BIM Lab.',
-                  ),
-                ),
-              );
+              _showLockedDialogSecond(context, 'BIM Lab');
             },
           ),
           ListTile(
             title: const Text('11. Proto Lab'),
+            trailing: const Icon(Icons.lock),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const RoomPage(
-                    roomName: 'Proto Lab',
-                    roomFact: 'Facts about Proto Lab.',
-                  ),
-                ),
-              );
+              _showLockedDialogSecond(context, 'Proto Lab');
             },
           ),
           ListTile(
             title: const Text('12. Annex/Drilling Fluids Lab'),
+            trailing: const Icon(Icons.lock),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const RoomPage(
-                    roomName: 'Annex/Drilling Fluids Lab',
-                    roomFact: 'Facts about Annex/Drilling Fluids Lab.',
-                  ),
-                ),
-              );
+              _showLockedDialogSecond(context, 'Annex/Drilling Fluids Lab');
             },
           ),
           ListTile(
             title: const Text('13. Civil Engineering Driving Simulator Lab'),
+            trailing: const Icon(Icons.lock),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const RoomPage(
-                    roomName: 'Civil Engineering Driving Simulator Lab',
-                    roomFact: 'Facts about Civil Engineering Driving Simulator Lab.',
-                  ),
-                ),
-              );
+              _showLockedDialogSecond(context, 'Civil Engineering Driving Simulator Lab');
             },
           ),
           ListTile(
             title: const Text('14. Brookshire Student Services Suite'),
+            trailing: const Icon(Icons.lock),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const RoomPage(
-                    roomName: 'Brookshire Student Services Suite',
-                    roomFact: 'Facts about Brookshire Student Services Suite.',
-                  ),
-                ),
-              );
+              _showLockedDialogSecond(context, 'Brookshire Student Services Suite');
             },
           ),
           ListTile(
@@ -556,7 +554,7 @@ class SecondFloorDrawer extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const StartScreen(initialPage: 1),
+                  builder: (context) => const StartScreen(initialPage: 1), 
                 ),
               );
             },
@@ -566,6 +564,66 @@ class SecondFloorDrawer extends StatelessWidget {
     );
   }
 }
+
+
+Future<void> _showLockedDialogSecond(BuildContext context, String roomName) async {
+    TextEditingController controller = TextEditingController(); 
+
+    // password answer
+    final roomPasswords = {
+      'BIM Lab': '2348',
+      'Proto Lab': '2272',
+      'Annex/Drilling Fluids Lab': '2147',
+      'Civil Engineering Driving Simulator Lab': '2215',
+      'Brookshire Student Services Suite': '2228',
+    };
+
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('LOCKED'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                TextField(
+                  controller: controller,
+                  decoration: const InputDecoration(hintText: 'Enter password'),
+                  obscureText: true,
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Submit'),
+              onPressed: () {
+                if (controller.text == roomPasswords[roomName]) {
+                  Navigator.of(context).pop(); 
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RoomPage(
+                        roomName: roomName,
+                        roomFact: 'Facts about $roomName.',
+                      ),
+                    ),
+                  );
+                }
+              },
+            ),
+            TextButton(
+              child: const Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop(); 
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
 
 // room page
@@ -586,10 +644,7 @@ class RoomPage extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const HomeScreen()),
-            );
+            Navigator.pop(context); 
           },
         ),
         title: Text(roomName),
@@ -601,7 +656,7 @@ class RoomPage extends StatelessWidget {
   }
 }
 
-// quiz page
+
 class QuizPage extends StatelessWidget {
   const QuizPage({super.key});
 
@@ -609,15 +664,6 @@ class QuizPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const HomeScreen()),
-            );
-          },
-        ),
       ),
       body: const Center(
         child: Text('Quiz Content'),
@@ -626,7 +672,7 @@ class QuizPage extends StatelessWidget {
   }
 }
 
-// homepage
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -634,15 +680,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const HomeScreen()),
-            );
-          },
-        ),
       ),
       body: const Center(
         child: Text('Home Page'),
