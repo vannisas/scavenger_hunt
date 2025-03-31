@@ -130,7 +130,38 @@ class MapPage extends StatefulWidget {
   const MapPage({super.key});
 
   @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(70, 29, 124, 1),
+        title: Image.asset('images/gold_lsu_logo.png', height: 120, width: 240),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.info_outline),
+            tooltip: 'Instruction',
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: const Text('Instruction'),
+                    content: const Text('Use pinch-to-zoom to explore the map.'),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text('OK'),
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
+          ),
+  @override
   MapPageState createState() => MapPageState();
+}
 }
 
 class MapPageState extends State<MapPage> {
@@ -1000,7 +1031,6 @@ class ActualQuizPageState extends State<ActualQuizPage> {
     );
   }
 }
-
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
