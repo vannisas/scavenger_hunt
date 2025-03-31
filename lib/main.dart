@@ -159,6 +159,9 @@ class MapPage extends StatefulWidget {
               );
             },
           ),
+        ]
+    ),
+    );
   @override
   MapPageState createState() => MapPageState();
 }
