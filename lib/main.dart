@@ -1051,9 +1051,24 @@ class HomePage extends StatelessWidget {
             Navigator.pop(context); 
           },
         ),
+        backgroundColor: Color.fromRGBO(70, 29, 124, 1),
+        title: Image.asset('images/gold_lsu_logo.png', height: 120, width: 240),
       ),
-      body: const Center(
-        child: Text('Home Page'),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Welcome to LSU's Patrick F. Taylor Hall scavenger hunt!"),
+            SizedBox(height: 15),
+            Text("Follow the map and explore the rooms to learn"),
+            Text("about LSU's engineering building and test your"),
+            Text("knowledge with a quiz."),
+            SizedBox(height: 30),
+            Image.asset('images/Patrick-Taylor-Hall-1.jpeg'),
+            SizedBox(height: 20),
+            Text("Good luck!"),
+          ],
+        ),
       ),
     );
   }
