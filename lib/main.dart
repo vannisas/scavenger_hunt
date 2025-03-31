@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset('images/gold_lsu_logo.png', height: 240, width: 480),
+            Image.asset('images/gold_lsu_logo.png', height: 200, width: 480),
             SizedBox(
               width: 200,
               child: ElevatedButton(
