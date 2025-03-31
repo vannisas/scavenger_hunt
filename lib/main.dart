@@ -69,7 +69,8 @@ class InstructionsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Instructions'),
+        backgroundColor: Color.fromRGBO(70, 29, 124, 1),
+        title: Image.asset('images/gold_lsu_logo.png', height: 120, width: 240),
       ),
       body: Center(
         child: Text('Here are the instructions for the app!'),
@@ -141,6 +142,7 @@ class MapPage extends StatefulWidget {
         title: Image.asset('images/gold_lsu_logo.png', height: 120, width: 240),
         actions: [
           IconButton(
+            color: Colors.white,
             icon: const Icon(Icons.info_outline),
             tooltip: 'Instruction',
             onPressed: () {
@@ -180,7 +182,10 @@ class MapPageState extends State<MapPage> {
 Widget build(BuildContext context) {
   return Scaffold(
     appBar: AppBar(
+      backgroundColor: Color.fromRGBO(70, 29, 124, 1),
+      title: Image.asset('images/gold_lsu_logo.png', height: 120, width: 240),
       leading: IconButton(
+        color: Colors.white,
         icon: const Icon(Icons.exit_to_app),
         tooltip: 'Start Screen',
         onPressed: () {
@@ -189,6 +194,7 @@ Widget build(BuildContext context) {
       ),
       actions: [
         IconButton(
+          color: Colors.white,
           icon: const Icon(Icons.info_outline),
           tooltip: 'Instruction',
           onPressed: () {
@@ -239,6 +245,7 @@ Widget build(BuildContext context) {
           Builder(
             builder: (context) {
               return IconButton(
+                color: Colors.white,
                 icon: const Icon(Icons.menu),
                 tooltip: 'Room Navigation',
                 onPressed: () {
@@ -694,13 +701,15 @@ class RoomPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromRGBO(70, 29, 124, 1),
         leading: IconButton(
+          color: Colors.white,
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context); 
           },
         ),
-        title: Text(roomName),
+        title: Text(roomName, style: TextStyle(color: Colors.white)),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -732,7 +741,10 @@ class QuizPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromRGBO(70, 29, 124, 1),
+        title: Image.asset('images/gold_lsu_logo.png', height: 120, width: 240),
         leading: IconButton(
+          color: Colors.white,
           icon: const Icon(Icons.exit_to_app ),
           tooltip: 'Start Screen',
           onPressed: () {
@@ -741,6 +753,7 @@ class QuizPage extends StatelessWidget {
         ),
         actions: [
           IconButton(
+            color: Colors.white,
             icon: const Icon(Icons.info_outline),
             tooltip: 'Instruction',
             onPressed: () {
@@ -977,7 +990,8 @@ class ActualQuizPageState extends State<ActualQuizPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Quiz Content'),
+        backgroundColor: Color.fromRGBO(70, 29, 124, 1),
+        title: Image.asset('images/gold_lsu_logo.png', height: 120, width: 240),
       ),
       body: SingleChildScrollView(
         controller: _scrollController, 
@@ -1044,6 +1058,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
+          color: Colors.white,
           icon: const Icon(Icons.exit_to_app ),
           tooltip: 'Start Screen',
 
@@ -1058,15 +1073,15 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Welcome to LSU's Patrick F. Taylor Hall scavenger hunt!"),
+            Text("Welcome to LSU's Patrick F. Taylor Hall scavenger hunt!", style: TextStyle(fontSize: 15)),
             SizedBox(height: 15),
-            Text("Follow the map and explore the rooms to learn"),
-            Text("about LSU's engineering building and test your"),
-            Text("knowledge with a quiz."),
+            Text("Follow the map and explore the rooms to learn", style: TextStyle(fontSize: 15)),
+            Text("about LSU's engineering building and test your", style: TextStyle(fontSize: 15)),
+            Text("knowledge with a quiz.", style: TextStyle(fontSize: 15)),
             SizedBox(height: 30),
             Image.asset('images/Patrick-Taylor-Hall-1.jpeg'),
             SizedBox(height: 20),
-            Text("Good luck!"),
+            Text("Good luck!", style: TextStyle(fontSize: 16)),
           ],
         ),
       ),
