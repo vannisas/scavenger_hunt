@@ -130,6 +130,10 @@ class MapPage extends StatefulWidget {
   const MapPage({super.key});
 
   @override
+  MapPageState createState() => MapPageState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -161,10 +165,7 @@ class MapPage extends StatefulWidget {
           ),
         ]
     ),
-    );
-  @override
-  MapPageState createState() => MapPageState();
-}
+  );
 }
 
 class MapPageState extends State<MapPage> {
