@@ -44,19 +44,7 @@ class HomeScreen extends StatelessWidget {
                 child: const Text('Start'),
               ),
             ),
-            const SizedBox(height: 20),
-            SizedBox(
-              width: 200,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const InstructionsScreen()),
-                  );
-                },
-                child: const Text('Instructions'),
-              ),
-            ),
+
           ],
         ),
       ),
@@ -222,7 +210,7 @@ Widget build(BuildContext context) {
                         ),
                         const SizedBox(height: 16.0), 
                         const Text(
-                          'You will notice a map with numbers on it. Your goal is to locate the rooms marked on the map! Look for the three-dash icon on the right. Some rooms are locked, and your objective is to unlock them. You will also see a stair icon that lets you switch between floors. A hint will be provided when you click on a room.',
+                          'You will notice a map with numbers on it. Your goal is to locate the rooms marked on the map! Look for the three-dash icon on the right. Some rooms are locked, and your objective is to unlock them by figuring out the room number. You will also see a stair icon that lets you switch between floors.',
                           textAlign: TextAlign.left, 
                           style: TextStyle(fontSize: 16.0), 
                         ),
@@ -753,57 +741,6 @@ class QuizPage extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        actions: [
-          IconButton(
-            color: Colors.white,
-            icon: const Icon(Icons.info_outline),
-            tooltip: 'Instruction',
-            onPressed: () {
-            showDialog(
-              context: context,
-              builder: (context) {
-                return Dialog(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.0),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(24.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min, 
-                      crossAxisAlignment: CrossAxisAlignment.start, 
-                      children: [
-                        const Text(
-                          'Instructions',
-                          style: TextStyle(
-                            fontSize: 18.0, 
-                            fontWeight: FontWeight.bold, 
-                          ),
-                        ),
-                        const SizedBox(height: 16.0), 
-                        const Text(
-                      'You will be asked several questions related to the rooms you just explored. Each question will test your knowledge of the facts you learned. Get ready to test your memory!',
-                          textAlign: TextAlign.left, 
-                          style: TextStyle(fontSize: 16.0), 
-                        ),
-                        const SizedBox(height: 16.0), 
-                        Align(
-                          alignment: Alignment.centerRight, 
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.pop(context); 
-                            },
-                            child: const Text('OK'),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              },
-            );
-          },
-        ),
-        ],
       ),
       body: Center(
         child: Padding(
